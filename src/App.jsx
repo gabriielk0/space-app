@@ -3,6 +3,7 @@ import EstilosGlobais from "./componentes/EstilosGlobais";
 import Cabecalho from "./componentes/Cabecalho";
 import BarraLateral from "./componentes/BarraLateral";
 import Banner from "./componentes/Banner";
+import Galeria from "./componentes/Galeria";
 
 const FundoGradiente = styled.div`
   background: linear-gradient(
@@ -13,7 +14,6 @@ const FundoGradiente = styled.div`
   );
   max-width: 100%;
   min-height: 100vh;
-  padding: 0 30px;
 `;
 
 const Container = styled.div`
@@ -22,15 +22,32 @@ const Container = styled.div`
   gap: 24px;
 `;
 
+const AppContainer = styled.div`
+  width: 1440px;
+  margin: 0 auto;
+  max-width: 100%;
+`;
+
+const ConteudoGaleria = styled.section`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+`;
+
 function App() {
   return (
     <FundoGradiente>
       <EstilosGlobais />
-      <Cabecalho />
-      <Container>
-        <BarraLateral />
-        <Banner />
-      </Container>
+      <AppContainer>
+        <Cabecalho />
+        <Container>
+          <BarraLateral />
+          <ConteudoGaleria>
+            <Banner />
+            <Galeria />
+          </ConteudoGaleria>
+        </Container>
+      </AppContainer>
     </FundoGradiente>
   );
 }

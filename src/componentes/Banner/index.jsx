@@ -8,7 +8,7 @@ const BannerEstilizado = styled.div`
         opacity: 0.8;
         background: url(${bannerImage});
         background-size: cover;
-        padding: 92px 64px;
+        padding: 9px 64px;
     `
 
 const TextoEstilizado = styled.h1`
