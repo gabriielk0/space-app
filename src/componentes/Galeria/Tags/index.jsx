@@ -19,6 +19,9 @@ const Botao = styled.button`
     height: 39px;
     border: solid 2px #7B78E5;
     border-radius: 10px;
+    &:hover {
+        border-color: #C98CF1;
+    }
 `
 
 
