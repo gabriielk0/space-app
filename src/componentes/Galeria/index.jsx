@@ -15,7 +15,7 @@ const ImagemContainer = styled.section`
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 14px;
+    gap: 10px;
 `
 
 // eslint-disable-next-line react/prop-types

@@ -49,6 +49,7 @@ const RodapeEstilizado = styled.footer`
 
 
 const FonteEstilizada = styled.p`
+  font-family: 'GandhiSansRegular';
   margin-top: 5px;
   font-size: 16px;
   font-weight: 400;
