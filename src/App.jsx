@@ -1,13 +1,13 @@
+/* eslint-disable no-unused-vars */
 import styled from "styled-components";
 import EstilosGlobais from "./componentes/EstilosGlobais";
 import Cabecalho from "./componentes/Cabecalho";
 import BarraLateral from "./componentes/BarraLateral";
 import Banner from "./componentes/Banner";
 import Galeria from "./componentes/Galeria";
-import Fotos from "./fotos.json"
+import Fotos from "./fotos.json";
 import { useState } from "react";
-
-
+import ModalZoom from "./componentes/ModalZoom";
 
 const FundoGradiente = styled.div`
   background: linear-gradient(
@@ -39,9 +39,8 @@ const ConteudoGaleria = styled.section`
 `;
 
 function App() {
-  // eslint-disable-next-line no-unused-vars
-  const [fotosDaGaleria, setFotosDaGaleria] = useState(Fotos)
-
+  const [fotosDaGaleria, setFotosDaGaleria] = useState(Fotos);
+  const [fotoSelecionada, setFotoSelecionada] = useState(null);
   return (
     <FundoGradiente>
       <EstilosGlobais />
@@ -51,10 +50,14 @@ function App() {
           <BarraLateral />
           <ConteudoGaleria>
             <Banner />
-            <Galeria fotos={fotosDaGaleria}/>
+            <Galeria
+              aoFotoSelecionada={(foto) => setFotoSelecionada(foto)}
+              fotos={fotosDaGaleria}
+            />
           </ConteudoGaleria>
         </Container>
       </AppContainer>
+      <ModalZoom foto={fotoSelecionada}/>
     </FundoGradiente>
   );
 }
