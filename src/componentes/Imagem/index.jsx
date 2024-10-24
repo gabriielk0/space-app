@@ -4,16 +4,19 @@ import { FaExpandAlt } from "react-icons/fa";
 
 /* eslint-disable react/prop-types */
 const Figure = styled.figure`
-  width: ${(props) => (props.$expandida ? "90%" : "460px")};
-  max-width: 300px;
+  width: ${(props) => (props.$expandida ? "90vw" : "460px")};
+  height: ${(props) => (props.$expandida ? "90vh" : "auto")};
+  max-width:${(props) => (props.$expandida ? "1152px" : "300px")};
   display: flex;
   flex-direction: column;
   margin: 0;
 `;
 
 const ImgEstilizada = styled.img`
-  max-width: 100%;
+  max-width: ${(props) => (props.$expandida ? "90vw" : "100%")};
+  max-height: ${(props) => (props.$expandida ? "90vh" : "auto")};
   border-radius: 20px 20px 0 0;
+  object-fit: contain;
 `;
 
 const FigCaptionEstilizada = styled.figcaption`
