@@ -19,7 +19,7 @@ const ImagemContainer = styled.section`
 `;
 
 // eslint-disable-next-line react/prop-types
-const Galeria = ({ fotos = [], aoFotoSelecionada }) => {
+const Galeria = ({ fotos = [], aoFotoSelecionada, aoAlternarFavorito }) => {
   return (
     <>
       <Tags />
@@ -30,6 +30,7 @@ const Galeria = ({ fotos = [], aoFotoSelecionada }) => {
             {fotos.map((foto) => (
               <Imagem
                 aoZoomSolicitado={aoFotoSelecionada}
+                aoAlternarFavorito={aoAlternarFavorito}
                 key={foto.id}
                 foto={foto}
               />

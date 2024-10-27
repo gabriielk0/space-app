@@ -46,6 +46,15 @@ function App() {
   const fecharModal = () => {
     setFotoSelecionada(null);
   }
+
+  const aoAlternarFavorito = (foto) => {
+    setFotosDaGaleria(fotosDaGaleria.map(fotoDaGaleria => {
+      return {
+        ...fotoDaGaleria,
+        favorita: fotoDaGaleria.id === foto.id ? !fotoDaGaleria.favorita : fotoDaGaleria.favorita
+      }
+    }))
+  }
   return (
     <FundoGradiente>
       <EstilosGlobais />
@@ -57,6 +66,7 @@ function App() {
             <Banner />
             <Galeria
               aoFotoSelecionada={(foto) => setFotoSelecionada(foto)}
+              aoAlternarFavorito={aoAlternarFavorito}
               fotos={fotosDaGaleria}
             />
           </ConteudoGaleria>

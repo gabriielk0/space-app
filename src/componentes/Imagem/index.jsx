@@ -1,12 +1,11 @@
 import styled from "styled-components";
-import { CiHeart } from "react-icons/ci";
 import { FaExpandAlt } from "react-icons/fa";
 
 /* eslint-disable react/prop-types */
 const Figure = styled.figure`
   width: ${(props) => (props.$expandida ? "90vw" : "460px")};
   height: ${(props) => (props.$expandida ? "90vh" : "auto")};
-  max-width:${(props) => (props.$expandida ? "1152px" : "300px")};
+  max-width: ${(props) => (props.$expandida ? "1152px" : "300px")};
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -63,7 +62,16 @@ const BotaoEstilizado = styled.button`
   cursor: pointer;
 `;
 
-const Imagem = ({ foto, expandida = false, aoZoomSolicitado }) => {
+const Imagem = ({
+  foto,
+  expandida = false,
+  aoZoomSolicitado,
+  aoAlternarFavorito,
+}) => {
+
+  const iconeFavorito = foto.favorita ? '/icones/favorito-ativo.png' : '/icones/favorito.png'
+
+
   return (
     <Figure $expandida={expandida} id={`foto-${foto.id}`}>
       <ImgEstilizada src={foto.path} alt={foto.alt} />
@@ -72,18 +80,22 @@ const Imagem = ({ foto, expandida = false, aoZoomSolicitado }) => {
         <RodapeEstilizado>
           <FonteEstilizada>{foto.fonte}</FonteEstilizada>
           <div>
-            <BotaoEstilizado>
-              <CiHeart style={{ color: "white" }} />
+            <BotaoEstilizado onClick={() => aoAlternarFavorito(foto)}>
+              <img src={iconeFavorito}
+                style={{ color: "white" }}
+              />
             </BotaoEstilizado>
-            {!expandida && 
+            {!expandida && (
               <BotaoEstilizado
                 aria-hidden={expandida}
-                onClick={() => {console.log("fotoSelecionada");
-                  aoZoomSolicitado(foto)}}
+                onClick={() => {
+                  console.log("fotoSelecionada");
+                  aoZoomSolicitado(foto);
+                }}
               >
-                <FaExpandAlt style={{ color: "white" }} />
+                <img src="/icones/expandir.png" alt="Expandir"/>
               </BotaoEstilizado>
-            }
+            )}
           </div>
         </RodapeEstilizado>
       </FigCaptionEstilizada>
