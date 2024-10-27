@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { FaExpandAlt } from "react-icons/fa";
 
 /* eslint-disable react/prop-types */
 const Figure = styled.figure`
@@ -68,9 +67,9 @@ const Imagem = ({
   aoZoomSolicitado,
   aoAlternarFavorito,
 }) => {
-
-  const iconeFavorito = foto.favorita ? '/icones/favorito-ativo.png' : '/icones/favorito.png'
-
+  const iconeFavorito = foto.favorita
+    ? "/icones/favorito-ativo.png"
+    : "/icones/favorito.png";
 
   return (
     <Figure $expandida={expandida} id={`foto-${foto.id}`}>
@@ -81,9 +80,7 @@ const Imagem = ({
           <FonteEstilizada>{foto.fonte}</FonteEstilizada>
           <div>
             <BotaoEstilizado onClick={() => aoAlternarFavorito(foto)}>
-              <img src={iconeFavorito}
-                style={{ color: "white" }}
-              />
+              <img src={iconeFavorito} style={{ color: "white" }} />
             </BotaoEstilizado>
             {!expandida && (
               <BotaoEstilizado
@@ -93,7 +90,7 @@ const Imagem = ({
                   aoZoomSolicitado(foto);
                 }}
               >
-                <img src="/icones/expandir.png" alt="Expandir"/>
+                <img src="/icones/expandir.png" alt="Expandir" />
               </BotaoEstilizado>
             )}
           </div>

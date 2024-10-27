@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import styled from "styled-components";
 import EstilosGlobais from "./componentes/EstilosGlobais";
 import Cabecalho from "./componentes/Cabecalho";
@@ -28,7 +27,7 @@ const Container = styled.div`
 
 const AppContainer = styled.div`
   width: 1440px;
-  margin: 0 auto ;
+  margin: 0 auto;
   max-width: 100%;
 `;
 
@@ -38,23 +37,32 @@ const ConteudoGaleria = styled.section`
   flex-grow: 1;
 `;
 
-
-
 function App() {
   const [fotosDaGaleria, setFotosDaGaleria] = useState(Fotos);
   const [fotoSelecionada, setFotoSelecionada] = useState(null);
   const fecharModal = () => {
     setFotoSelecionada(null);
-  }
+  };
 
   const aoAlternarFavorito = (foto) => {
-    setFotosDaGaleria(fotosDaGaleria.map(fotoDaGaleria => {
-      return {
-        ...fotoDaGaleria,
-        favorita: fotoDaGaleria.id === foto.id ? !fotoDaGaleria.favorita : fotoDaGaleria.favorita
-      }
-    }))
-  }
+    if (foto.id === fotoSelecionada?.id) {
+      setFotoSelecionada({
+        ...fotoSelecionada,
+        favorita: !fotoSelecionada.favorita,
+      });
+    }
+    setFotosDaGaleria(
+      fotosDaGaleria.map((fotoDaGaleria) => {
+        return {
+          ...fotoDaGaleria,
+          favorita:
+            fotoDaGaleria.id === foto.id
+              ? !fotoDaGaleria.favorita
+              : fotoDaGaleria.favorita,
+        };
+      })
+    );
+  };
   return (
     <FundoGradiente>
       <EstilosGlobais />
@@ -72,7 +80,11 @@ function App() {
           </ConteudoGaleria>
         </Container>
       </AppContainer>
-      <ModalZoom foto={fotoSelecionada} aoFechar={fecharModal}/>
+      <ModalZoom
+        foto={fotoSelecionada}
+        aoFechar={fecharModal}
+        aoAlternarFavorito={aoAlternarFavorito}
+      />
     </FundoGradiente>
   );
 }
